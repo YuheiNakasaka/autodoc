@@ -27,6 +27,10 @@ module Autodoc
       end
     end
 
+    def header
+      ERB.new(Autodoc.configuration.template_header, nil, "-").result(binding)
+    end
+
     def write_toc
       toc_path.parent.mkpath
       toc_path.open("w") {|file| file << render_toc }
